@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 1</title>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body class="container">
+  <div id="app" class="row bg-light mt-5 p-3" >
+    <h2 class="text-center">Form 1</h2>
+    <div class="row justify-content-end">
+        <button class="btn btn-sm btn-primary col-3" data-bs-toggle="modal" onclick="prepareAccordions()" data-bs-target="#exampleModal">Formu Düzenle</button>
+    </div>
+    <div id="formElements"></div>
+
+      <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Formu Düzenle</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+             <!-- accordion -->
+            <div class="accordion" id="accordionExample">
+                  <accordion-item></accordion-item>
+              </div>
+              <!-- accordion end-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="changeFormData()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal end-->
+  </div>
+  
+    <script src="./accordion-repeater.js"></script>
+    <script src="./f-repeater/form-repeater.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
