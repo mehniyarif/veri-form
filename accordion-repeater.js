@@ -1,9 +1,9 @@
 const accordion = document.createElement("template");
 accordion.innerHTML = `
 <style>
-@import "assets/css/bootstrap.min.css"; 
+@import "./assets/css/bootstrap.min.css"; 
 </style>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
 `;
 
 
