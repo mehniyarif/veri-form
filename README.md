@@ -17,4 +17,4 @@
 - Form Data Ön İzlenebiliyor.
 - Form Datası Kopyalanabiliyor.
   
-## [Demo]("https://mehniyarif.github.io/veri-form/")
+## [Demo](https://mehniyarif.github.io/veri-form/)
