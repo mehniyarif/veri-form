@@ -141,8 +141,17 @@ function makeId(length) {
   return result.toLowerCase()
 }
 
+function copyData(){
+  navigator.clipboard.writeText(JSON.stringify(formValues.data, undefined, 2)).then(function() {
+    console.log("Başarıyla Kopyalandı")
+  }, function() {
+    console.log("Kopyalama Başarısız Oldu.")
+  });
+}
+
 async function createElements() {
   prepareformElements();
+  document.querySelector('#collapseFormData .accordion-body pre').textContent = JSON.stringify(formValues.data, undefined, 2)
 }
 
 function prepareformElements() {

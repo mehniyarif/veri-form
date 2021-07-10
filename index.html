@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body class="container">
-  <div id="app" class="row bg-light mt-5 p-3" >
+  <div class="row justify-content-evenly">
+  <div id="app" class="col-6 bg-light mt-5 p-5" >
     <h2 class="text-center">Form 1</h2>
     <div class="row justify-content-end">
         <button class="btn btn-sm btn-primary col-3" data-bs-toggle="modal" onclick="prepareAccordions()" data-bs-target="#exampleModal">Formu Düzenle</button>
@@ -43,6 +44,29 @@
     </div>
     <!-- modal end-->
   </div>
+  <div class="col-6 mt-5 p-3">
+    <div class="accordion" id="accordionFormData">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFormData" aria-expanded="true" aria-controls="collapseFormData">
+            Form 1 Data
+          </button>
+        </h2>
+        <div id="collapseFormData" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFormData">
+          <div class="accordion-body">
+            
+          <div class="row justify-content-end">
+            <button class="btn btn-sm btn-info col-2" onclick="copyData()">
+              Copy Data
+            </button>
+          </div>
+            <pre></pre>
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
     <script src="./accordion-repeater.js"></script>
     <script src="./f-repeater/form-repeater.js"></script>
