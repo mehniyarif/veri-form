@@ -1,3 +1,12 @@
+const normalFormElement = {
+  type:"text",
+  name:"new",
+  label:"New",
+  class:"form-control",
+  placeholder:"",
+  value:""
+}
+
 var formValues = {
   config:{
       cssFramework:"bootstrap"
@@ -109,10 +118,15 @@ const prepareFormData = function(currentObj){
 }
 
 function changeFormData(){  
-  formValues.data = JSON.parse(document.querySelector("#accordionExample").getAttribute("value"))
+  formValues.data = new Array(...JSON.parse(document.querySelector("#accordionExample").getAttribute("value")))
   createElements()
   let myModal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'))
   myModal.hide()
+}
+
+function newFormElement(){
+  formValues.data.push(normalFormElement)
+  prepareAccordions()
 }
 
 function makeId(length) {

@@ -95,6 +95,8 @@ class AccordionItem extends HTMLElement {
     form.setAttribute("value",JSON.stringify(this.dataAccordionForm))
     this.setAttribute("value",JSON.stringify(this.dataAccordionForm))
 
+
+    this.accordionsChange() //Başlangıçta çalıştırdık
     const vm = this
       //form elemanlarından birinin değeri değiştiğinde çalışır
       setTimeout(() => {
