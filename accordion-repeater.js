@@ -14,12 +14,13 @@ class AccordionItem extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(accordion.content.cloneNode(true));
+    this.accordionId = this.makeId(10)
     
-    this.attributesList = ["type","id","class","href","placeholder","src","alt","style","title","width","for","onclick","onchange","value"] //attribute olarak gelebilecek muhtemel değerleri listeledik
+    this.attributesList = ["type","id","name","class","href","placeholder","src","alt","style","title","width","for","onclick","onchange","value"] //attribute olarak gelebilecek muhtemel değerleri listeledik
 
     setTimeout(() => {  
-      this.loadElement()
       this.dataAccordionForm = JSON.parse(this.getAttribute('value'))
+      this.loadElement(this.dataAccordionForm)
     }, 100);
   }
   
@@ -29,11 +30,13 @@ class AccordionItem extends HTMLElement {
     this.collapseId = this.makeId(9)
     this.newElement = document.createElement("div")
     this.newElement.setAttribute("class","accordion-item")
-
+    
+    //header
     let header = document.createElement("h2")
     header.setAttribute("class","accordion-header")
     header.setAttribute("id",this.headingId)
 
+    //header Button
     let headerBtn = document.createElement("button")
     headerBtn.setAttribute("class","accordion-button")
     headerBtn.setAttribute("type","button")
@@ -43,22 +46,36 @@ class AccordionItem extends HTMLElement {
     headerBtn.setAttribute("aria-controls",this.collapseId)
     headerBtn.textContent = this.getAttribute("label")
     header.appendChild(headerBtn)
+  
 
+    //Body Accordion
+    let bodyAccordion = document.createElement("div")
+    bodyAccordion.setAttribute("class","accordion-body") 
+
+    //Body Container
     let bodyContainer = document.createElement("div")
     bodyContainer.setAttribute("id",this.collapseId)
     bodyContainer.setAttribute("class","accordion-collapse collapse")
     bodyContainer.setAttribute("aria-labelledby",this.headingId)
     bodyContainer.setAttribute("data-bs-parent","#accordionExample")
 
-    let bodyAccordion = document.createElement("div")
-    bodyAccordion.setAttribute("class","accordion-body")
-    bodyContainer.appendChild(bodyAccordion)
+     //Delete Button
+     let deleteBtn = document.createElement("button")
+     deleteBtn.setAttribute("class","btn btn-danger btn-sm px-5 mt-3")
+     deleteBtn.setAttribute("type","button")
+     deleteBtn.setAttribute("onclick",`removeFormElement("${this.accordionId}")`)
+     deleteBtn.textContent = "Sil"
+     bodyContainer.appendChild(deleteBtn)
+
+     bodyContainer.appendChild(bodyAccordion)
+
+   
 
     this.shadowRoot.appendChild(header)
     this.shadowRoot.appendChild(bodyContainer)
     setTimeout(() => {
         this.attributesList.forEach(attr => {
-            if(this.getAttribute(attr)){
+            if(this.getAttribute(attr) && !["id"].includes(attr)){
                 this.removeAttribute(attr)
             }
           })
@@ -94,6 +111,7 @@ class AccordionItem extends HTMLElement {
     let form = document.createElement("form-element");
     form.setAttribute("value",JSON.stringify(this.dataAccordionForm))
     this.setAttribute("value",JSON.stringify(this.dataAccordionForm))
+    this.setAttribute("id",this.accordionId)
 
 
     this.accordionsChange() //Başlangıçta çalıştırdık
@@ -115,7 +133,7 @@ class AccordionItem extends HTMLElement {
       }, 150);
       
 
-      this.shadowRoot.querySelector(`#${this.collapseId} div`).append(form);
+      this.shadowRoot.querySelector(`#${this.collapseId} div`).appendChild(form);
   }
 
   makeId(length) {

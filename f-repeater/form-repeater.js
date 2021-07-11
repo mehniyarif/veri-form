@@ -46,7 +46,7 @@ class FormElement extends HTMLElement {
            group.setAttribute("id",id)
            group.setAttribute("class","mb-3")
         }
-        this.shadowRoot.appendChild(group)
+        this.shadowRoot.querySelector("form").appendChild(group)
         this.loadElement(this.formData[index])
       })
 

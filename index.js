@@ -129,6 +129,19 @@ function newFormElement(){
   prepareAccordions()
 }
 
+function removeFormElement(id){
+  
+  let accordions = document.querySelector("#accordionExample").childNodes
+  let ind
+  accordions.forEach((v,i) => {
+    if(v.id == id){
+        ind = i
+    }
+  })
+  formValues.data.splice(ind,1)
+  prepareAccordions()
+}
+
 function makeId(length) {
   var result           = ["id"];
   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
